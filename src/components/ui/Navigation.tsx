@@ -46,14 +46,14 @@ const Navigation = () => {
         <nav className="container mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <div className="flex-shrink-0">
+            <div className="flex-shrink-0 max-w-[60%] sm:max-w-none">
               <Link href="/" className="flex items-center group">
                 <Image
                   src="/logo.png"
                   alt="Legendary Hustlers"
                   width={200}
                   height={60}
-                  className="h-12 w-auto group-hover:scale-110 transition-transform duration-300"
+                  className="h-8 sm:h-10 md:h-12 w-auto group-hover:scale-110 transition-transform duration-300"
                 />
               </Link>
             </div>
