@@ -1,26 +1,352 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Russo+One&display=swap');
 
+/* Custom CSS Variables */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --primary-blue: 59 130 246;
+  --primary-purple: 147 51 234;
+  --gray-50: 249 250 251;
+  --gray-100: 243 244 246;
+  --gray-200: 229 231 235;
+  --gray-300: 209 213 219;
+  --gray-400: 156 163 175;
+  --gray-500: 107 114 128;
+  --gray-600: 75 85 99;
+  --gray-700: 55 65 81;
+  --gray-800: 31 41 55;
+  --gray-900: 17 24 39;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Base Styles */
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Rajdhani', sans-serif;
+  color: rgb(var(--gray-900));
+  line-height: 1.6;
+  background-color: rgb(var(--gray-50));
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Heavy Duty Font Classes */
+.font-industrial {
+  font-family: 'Orbitron', monospace;
+}
+
+.font-heavy {
+  font-family: 'Russo One', sans-serif;
+}
+
+.font-tactical {
+  font-family: 'Rajdhani', sans-serif;
+}
+
+/* Diamond Plate Background Pattern */
+.diamond-plate {
+  background-image: url('/seamlessdiamondplate.avif');
+  background-size: 200px 200px;
+  background-repeat: repeat;
+  position: relative;
+}
+
+.diamond-plate::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, transparent 50%, rgba(0,0,0,0.1) 100%);
+  pointer-events: none;
+}
+
+/* Dark Diamond Plate */
+.diamond-plate-dark {
+  background-image: url('/seamlessdiamondplate.avif');
+  background-size: 200px 200px;
+  background-repeat: repeat;
+  position: relative;
+}
+
+.diamond-plate-dark::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.8) 100%);
+  pointer-events: none;
+}
+
+/* Metal Texture */
+.metal-texture {
+  background: linear-gradient(135deg, #71797E 0%, #71797E 25%, #8A9BA8 25%, #8A9BA8 50%, #71797E 50%, #71797E 75%, #8A9BA8 75%);
+  background-size: 40px 40px;
+  position: relative;
+}
+
+.metal-texture::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.1) 50%, transparent 100%);
+  animation: metalShine 3s ease-in-out infinite;
+}
+
+@keyframes metalShine {
+  0%, 100% { transform: translateX(-100%); }
+  50% { transform: translateX(100%); }
+}
+
+/* Industrial Button Styles */
+.btn-industrial {
+  background: linear-gradient(145deg, #606060, #404040);
+  border: 2px solid #808080;
+  box-shadow: 
+    inset 2px 2px 4px rgba(255,255,255,0.1),
+    inset -2px -2px 4px rgba(0,0,0,0.3),
+    0 4px 8px rgba(0,0,0,0.3);
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+  transition: all 0.2s ease;
+}
+
+.btn-industrial:hover {
+  background: linear-gradient(145deg, #707070, #505050);
+  box-shadow: 
+    inset 2px 2px 4px rgba(255,255,255,0.2),
+    inset -2px -2px 4px rgba(0,0,0,0.4),
+    0 6px 12px rgba(0,0,0,0.4);
+  transform: translateY(-1px);
+}
+
+.btn-industrial:active {
+  box-shadow: 
+    inset 4px 4px 8px rgba(0,0,0,0.3),
+    inset -2px -2px 4px rgba(255,255,255,0.1);
+  transform: translateY(1px);
+}
+
+/* Steel Card Effect */
+.steel-card {
+  background: linear-gradient(145deg, #e6e6e6, #cccccc);
+  border: 1px solid #999999;
+  box-shadow: 
+    inset 1px 1px 2px rgba(255,255,255,0.8),
+    inset -1px -1px 2px rgba(0,0,0,0.2),
+    0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Custom Scrollbar - Industrial Style */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: linear-gradient(90deg, #404040, #606060);
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, #808080, #a0a0a0);
+  border-radius: 0;
+  border: 1px solid #606060;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(90deg, #909090, #b0b0b0);
+}
+
+/* Ensure Tailwind classes work */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: 'Rajdhani', sans-serif;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200;
+  }
+  
+  .btn-secondary {
+    @apply bg-transparent border-2 border-gray-300 text-gray-900 hover:bg-gray-900 hover:text-white px-6 py-3 rounded-lg font-medium transition-all duration-200;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent;
+  }
+  
+  .glass {
+    @apply backdrop-blur-sm bg-white/10 border border-white/20;
+  }
+}
+
+/* Custom Animations */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(-25%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+/* Utility Classes */
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-bounce {
+  animation: bounce 1s infinite;
+}
+
+/* Custom Gradient Text */
+.bg-clip-text {
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.text-transparent {
+  color: transparent;
+}
+
+/* Backdrop Blur Support */
+.backdrop-blur-sm {
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.backdrop-blur-md {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Button styles */
+.btn-primary {
+  background-color: rgb(var(--primary-blue));
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: rgb(29 78 216);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: rgb(var(--gray-900));
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  border: 2px solid rgb(var(--gray-300));
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background-color: rgb(var(--gray-900));
+  color: white;
+}
+
+/* Card styles */
+.card {
+  background-color: white;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Loading spinner */
+.spinner {
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 2px solid #f3f4f6;
+  border-top: 2px solid #3b82f6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Responsive utilities */
+/* Wood Texture for Cards */
+.wood-texture {
+  background-image: url('/seamlesswood.jpg');
+  background-size: 300px 300px;
+  background-repeat: repeat;
+  position: relative;
+}
+
+.wood-texture::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 }
