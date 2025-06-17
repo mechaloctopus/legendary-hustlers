@@ -4,10 +4,14 @@ import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { NavItem } from '@/types';
+import { scrollToSection } from '@/lib/utils';
+import { useActiveSection } from '@/hooks/useActiveSection';
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const activeSection = useActiveSection();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,15 +22,12 @@ const Navigation = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      setIsMobileMenuOpen(false);
-    }
+  const handleNavigation = (sectionId: string) => {
+    scrollToSection(sectionId);
+    setIsMobileMenuOpen(false);
   };
 
-  const navItems = [
+  const navItems: NavItem[] = [
     { name: 'HOME', id: 'hero' },
     { name: 'SERVICES', id: 'services' },
     { name: 'CONTACT', id: 'contact' },
@@ -63,12 +64,16 @@ const Navigation = () => {
                 {navItems.map((item) => (
                   <button
                     key={item.name}
-                    onClick={() => scrollToSection(item.id)}
+                    onClick={() => handleNavigation(item.id)}
                     className={`font-tactical px-6 py-3 text-sm font-bold transition-all duration-300 hover:scale-105 tracking-wider ${
-                      isScrolled 
-                        ? 'text-gray-800 hover:bg-yellow-400/20 hover:text-yellow-600' 
-                        : 'text-gray-800 hover:bg-white/20 hover:text-yellow-600'
+                      activeSection === item.id
+                        ? 'bg-yellow-400 text-black border-2 border-yellow-600'
+                        : isScrolled 
+                          ? 'text-gray-800 hover:bg-yellow-400/20 hover:text-yellow-600' 
+                          : 'text-gray-800 hover:bg-white/20 hover:text-yellow-600'
                     }`}
+                    aria-label={`Navigate to ${item.name.toLowerCase()} section`}
+                    aria-current={activeSection === item.id ? 'page' : undefined}
                   >
                     {item.name}
                   </button>
@@ -85,6 +90,8 @@ const Navigation = () => {
                     ? 'text-gray-800 hover:bg-yellow-400/20' 
                     : 'text-gray-800 hover:bg-white/20'
                 }`}
+                aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+                aria-expanded={isMobileMenuOpen}
               >
                 {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
               </button>
@@ -100,8 +107,14 @@ const Navigation = () => {
             {navItems.map((item) => (
               <button
                 key={item.name}
-                onClick={() => scrollToSection(item.id)}
-                className="block w-full text-left px-6 py-4 text-lg font-tactical font-bold text-gray-800 hover:text-yellow-600 hover:bg-yellow-400/20 transition-all duration-300 tracking-wider"
+                onClick={() => handleNavigation(item.id)}
+                className={`block w-full text-left px-6 py-4 text-lg font-tactical font-bold transition-all duration-300 tracking-wider ${
+                  activeSection === item.id
+                    ? 'bg-yellow-400 text-black'
+                    : 'text-gray-800 hover:text-yellow-600 hover:bg-yellow-400/20'
+                }`}
+                aria-label={`Navigate to ${item.name.toLowerCase()} section`}
+                aria-current={activeSection === item.id ? 'page' : undefined}
               >
                 {item.name}
               </button>

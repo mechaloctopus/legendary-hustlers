@@ -32,6 +32,46 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Enhanced Focus Styles for Accessibility */
+*:focus {
+  outline: 3px solid #facc15;
+  outline-offset: 2px;
+}
+
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: 3px solid #facc15;
+  outline-offset: 2px;
+}
+
+/* Skip link styles */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.sr-only:focus,
+.focus\:not-sr-only:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: inherit;
+  margin: inherit;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
 /* Heavy Duty Font Classes */
 .font-industrial {
   font-family: 'Orbitron', monospace;
@@ -217,6 +257,28 @@ body {
   }
 }
 
+@keyframes fade-in {
+  0% { 
+    opacity: 0; 
+    transform: translateY(20px);
+  }
+  100% { 
+    opacity: 1; 
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-up {
+  0% { 
+    opacity: 0; 
+    transform: translateY(30px);
+  }
+  100% { 
+    opacity: 1; 
+    transform: translateY(0);
+  }
+}
+
 /* Utility Classes */
 .animate-spin {
   animation: spin 1s linear infinite;
@@ -228,6 +290,18 @@ body {
 
 .animate-bounce {
   animation: bounce 1s infinite;
+}
+
+.animate-in {
+  animation-fill-mode: both;
+}
+
+.fade-in {
+  animation: fade-in 0.7s ease-out;
+}
+
+.slide-up {
+  animation: slide-up 0.6s ease-out;
 }
 
 /* Custom Gradient Text */

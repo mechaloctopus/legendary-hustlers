@@ -7,6 +7,8 @@ import * as z from 'zod';
 import { Mail, Phone, Send, MapPin } from 'lucide-react';
 import Image from 'next/image';
 import emailjs from '@emailjs/browser';
+import LoadingSpinner from '@/components/ui/LoadingSpinner';
+import { trackFormSubmission } from '@/lib/analytics';
 
 const contactSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
@@ -84,6 +86,9 @@ For now, please contact us directly at office@legendaryhustlers.com`);
 
       console.log('Email sent successfully:', result);
       
+      // Track successful form submission
+      trackFormSubmission('contact_form', true);
+      
       setIsSubmitting(false);
       setIsSubmitted(true);
       reset();
@@ -91,6 +96,10 @@ For now, please contact us directly at office@legendaryhustlers.com`);
       setTimeout(() => setIsSubmitted(false), 5000);
     } catch (error) {
       console.error('Failed to send email:', error);
+      
+      // Track failed form submission
+      trackFormSubmission('contact_form', false);
+      
       setIsSubmitting(false);
       
       // More helpful error message
@@ -306,7 +315,7 @@ If this keeps happening, EmailJS might need to be configured.`);
                   >
                     {isSubmitting ? (
                       <>
-                        <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                        <LoadingSpinner size="sm" className="border-white border-t-transparent" />
                         <span>SENDING...</span>
                       </>
                     ) : (

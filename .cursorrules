@@ -7,51 +7,44 @@ Modern, responsive single-page website for Legendary Hustlers with clean, elegan
 - **Framework**: Next.js 15.3.3 with TypeScript
 - **Styling**: Tailwind CSS v4
 - **UI Components**: Custom components with Tailwind
-- **Animations**: Framer Motion for parallax and scroll effects
 - **Form Handling**: React Hook Form with file upload
-- **Email**: EmailJS or similar for contact form
-- **Payment**: Square integration for store
+- **Email**: EmailJS for contact form
 - **Images**: Next.js Image optimization
 
 ## Website Structure
 ### Single Page Sections (in order):
-1. **Hero Section**: Looping video background with navigation
+1. **Hero Section**: Industrial background with navigation
 2. **Services Section**: Grid of service cards
 3. **Contact Section**: Form with image upload capability
-4. **About Us Section**: 4 team member cards
-
-### Separate Pages:
-- **Store Page**: Product cards with Square checkout integration
+4. **About Us Section**: Team member cards
 
 ## Design Requirements
 - **Mobile-first responsive design**
-- **Clean, minimal aesthetic**
+- **Clean, industrial aesthetic**
 - **Modern typography**
-- **Parallax scroll effects**
 - **Smooth transitions**
-- **No unnecessary logos or text**
+- **Professional appearance**
 - **Great navigation UX**
 
 ## Email Configuration
 - Contact form sends to: office@legendaryhustlers.com
-- Order confirmations to same email
 
 ## Development Phases
-1. **Phase 1**: Foundation & aesthetic (current)
+1. **Phase 1**: Foundation & aesthetic (completed)
    - Basic structure and layout
    - Responsive design
-   - Dummy content and images
+   - Content and images
    - Navigation system
 
-2. **Phase 2**: Functionality
+2. **Phase 2**: Functionality (completed)
    - Contact form with image upload
    - Email integration
    - Form validation
 
-3. **Phase 3**: Store Integration
-   - Square payment system
-   - Product management
-   - Order processing
+3. **Phase 3**: Enhancements
+   - Performance optimization
+   - SEO improvements
+   - Accessibility enhancements
 
 ## Code Standards
 - Use TypeScript for all components
@@ -66,34 +59,34 @@ Modern, responsive single-page website for Legendary Hustlers with clean, elegan
 src/
 ├── app/
 │   ├── page.tsx (main single page)
-│   ├── store/page.tsx (store page)
 │   ├── layout.tsx
 │   └── globals.css
 ├── components/
 │   ├── ui/ (reusable UI components)
 │   ├── sections/ (page sections)
-│   ├── forms/ (form components)
-│   └── store/ (store components)
+│   └── forms/ (form components)
 ├── lib/ (utilities)
 └── types/ (TypeScript types)
 ```
 
-## Dependencies to Add
-- framer-motion (animations/parallax)
+## Dependencies
+- framer-motion (animations)
 - react-hook-form (forms)
-- emailjs-com (email sending)
+- @emailjs/browser (email sending)
 - @types/node (file uploads)
 - lucide-react (icons)
+- zod (form validation)
+- clsx & tailwind-merge (utility functions)
 
 ## Responsive Breakpoints
 - Mobile: 0-768px
 - Tablet: 769-1024px
 - Desktop: 1025px+
 
-## Color Scheme (to be refined)
-- Primary: Modern neutral palette
-- Accent: Minimal color usage
-- Background: Clean whites/grays
+## Color Scheme
+- Primary: Industrial grays and metals
+- Accent: Yellow/orange highlights
+- Background: Diamond plate textures
 - Text: High contrast for readability
 
 ## Performance Requirements
