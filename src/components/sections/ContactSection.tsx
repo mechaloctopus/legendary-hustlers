@@ -188,18 +188,21 @@ If this keeps happening, EmailJS might need to be configured.`);
                         <MapPin className="w-8 h-8 text-white" />
                       </div>
                       <div className="bg-gray-900 px-3 py-1 text-yellow-400 font-tactical font-bold text-lg tracking-wide mb-2 inline-block">
-                        SERVICE AREA
+                        WORLD WIDE AT THE RIGHT PRICE
                       </div>
-                      <div className="text-gray-900 text-base font-bold">UTAH & SURROUNDING AREAS</div>
+                      <div className="text-gray-900 text-base font-bold">WE ARE AVAILABLE WORLD WIDE AT THE RIGHT PRICE</div>
                     </div>
                   </div>
                 </div>
 
                 {/* Response Time Card */}
                 <div className="mt-8 p-6 bg-gradient-to-r from-yellow-400/20 to-orange-500/20 border-2 border-yellow-400">
-                  <h4 className="bg-black/70 px-2 py-1 border border-yellow-400 font-heavy font-black text-yellow-400 mb-2 text-xl tracking-wider inline-block">⚡ QUICK RESPONSE</h4>
+                  <h4 className="bg-black/70 px-2 py-1 border border-yellow-400 font-heavy font-black text-yellow-400 mb-2 text-xl tracking-wider inline-block">EVENTUAL RESPONSE</h4>
                   <p className="font-tactical text-gray-300 font-semibold">
-                    FREE ESTIMATES PROVIDED WITHIN 24 HOURS
+                    FREE ESTIMATES PROVIDED WITHIN 240 HOURS
+                  </p>
+                  <p className="font-tactical text-gray-300 font-semibold mt-2">
+                    sometimes legendary hustlers is fully occupied with lunar missions and will not have time to respond immediately, but will eventually. thank you for your patience
                   </p>
                 </div>
               </div>
@@ -213,7 +216,7 @@ If this keeps happening, EmailJS might need to be configured.`);
                     <Mail className="w-12 h-12 text-white" />
                   </div>
                   <h3 className="bg-black/70 px-4 py-2 border border-yellow-400 font-heavy text-3xl font-black text-yellow-400 mb-4 tracking-wider inline-block">QUOTE REQUEST SENT!</h3>
-                  <p className="font-tactical text-gray-300 text-lg font-bold">WE&apos;LL CONTACT YOU WITHIN 24 HOURS WITH YOUR FREE ESTIMATE.</p>
+                  <p className="font-tactical text-gray-300 text-lg font-bold">WE&apos;LL CONTACT YOU WITHIN 240 HOURS WITH YOUR FREE ESTIMATE.</p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">

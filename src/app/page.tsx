@@ -3,6 +3,7 @@ import HeroSection from '@/components/sections/HeroSection';
 import ServicesSection from '@/components/sections/ServicesSection';
 import ContactSection from '@/components/sections/ContactSection';
 import AboutSection from '@/components/sections/AboutSection';
+import PhotosSection from '@/components/sections/PhotosSection';
 import ScrollToTop from '@/components/ui/ScrollToTop';
 import SkipLink from '@/components/ui/SkipLink';
 import LazySection from '@/components/ui/LazySection';
@@ -22,6 +23,9 @@ export default function Home() {
         </LazySection>
         <LazySection>
           <AboutSection />
+        </LazySection>
+        <LazySection>
+          <PhotosSection />
         </LazySection>
       </main>
       <ScrollToTop />

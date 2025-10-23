@@ -19,7 +19,7 @@ const AboutSection = () => {
               <div className="h-2 w-32 bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 mx-auto mb-8"></div>
             </div>
             <p className="font-tactical text-xl md:text-2xl text-white max-w-4xl mx-auto leading-relaxed font-bold tracking-wide">
-              TREE CARE SPECIALISTS SERVING UTAH
+              a cooperating network of professionals. a band of brothers
             </p>
           </div>
 
